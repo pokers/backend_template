@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:14.6
+    container_name: service_db_container
+    restart: always
+    ports:
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
+    volumes:
+      - ./localdb/postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: "${POSTGRES_USER}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+      POSTGRES_DB: "${POSTGRES_DB_NAME}"
+    expose:
+      - 5432
