@@ -1,7 +1,7 @@
 
-import { createLogger } from './logger';
+const { log } = require('./logger')
 
-const log = (ctx, error)=>{
+const requestLogger = (ctx, error)=>{
     const {
         state: { requestId },
         request: { url, method, body },
@@ -22,5 +22,8 @@ const log = (ctx, error)=>{
         }
     }
 
-    
+    const logPrint = error? log.error: log.info
+    logPrint(requestId, logEntry)
 }
+
+module.exports = { requestLogger }

@@ -1,7 +1,7 @@
-import { config } from '../../config/config'
-import Winston from 'winston'
+const { config } = require('../../config/config.js')
+const Winston = require('winston')
 
-const createLogger = ()=>{
+const log = (()=>{
     const envLogLevel = {
         local: 'debug',
         dev: 'debug',
@@ -16,6 +16,6 @@ const createLogger = ()=>{
         format: Winston.format.json(),
         transports: [new Winston.transports.Console({ level: logLevel })],
     });
-}
+})()
 
-export { createLogger }
+module.exports = { log }

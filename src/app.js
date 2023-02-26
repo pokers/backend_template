@@ -1,21 +1,15 @@
-import express, { Express } from 'express'
-import morgan from 'morgan'
-import cors from 'cors'
-import bodyParser from 'body-parser'
-import { config } from './config/config'
-import { initRoutes } from './route'
-import compression from 'compression'
-import { log } from './lib/logger'
-
-import { Services } from './type'
-import { serviceProvider } from './service/serviceProvider'
-import { SequelizeORM } from './lib/sequelizeORM'
-
-var memwatch = require('node-memwatch-new');
+const express = require('express') 
+const morgan = require('morgan') 
+const cors = require('cors') 
+const bodyParser = require('body-parser') 
+const { config } = require('./config/config') 
+const { initRoutes } = require('./routes') 
+const compression = require('compression') 
+const { log, requestLogger } = require('./utils/logging')
 
 const app = express();
 
-app.set('port', serverCfg.port);
+app.set('port', config.App.PORT);
 
 const corsOptions = {
     origin: '*',
@@ -28,15 +22,38 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(compression());
 
+// error logging
+app.use(async (ctx, next)=>{
+    try{
+        await next();
+    }catch(e){
+        const errorObject = {
+            ...err,
+            message: err.message,
+            trace: err.stack,
+        }
+
+        ctx.status = err.status || err.statusCode || 500
+        ctx.body = {
+            error: errorObject,
+            meta: {
+                requestId: ctx.statusMessage.requestId,
+                now: +new Date(),
+            },
+        }
+
+        requestLogger(ctx, {
+            message: err.message,
+            trace: err.trace,
+        })
+    }
+})
+
 initRoutes(app);
 log.info('Route initialized...');
 
-app.listen(config.App.port, () =>{
-    log.info("Start server...\n")
-});
-
-memwatch.on('stats', (stats)=>{
-    console.log(stats);
+app.listen(config.App.PORT, () =>{
+    log.info(`Start to listen on ${config.App.PORT} ...`)
 });
 
 process.on('SIGINT', async function() {
@@ -44,4 +61,3 @@ process.on('SIGINT', async function() {
     process.exit(0);
 });
 
-export default app;
