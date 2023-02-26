@@ -1,0 +1,10 @@
+.DS_Sore
+.docs
+.env
+.idea/
+.vscode/
+node_modules/
+npm-debug.log
+*.tfstate.*
+*.tfstate*
+localdb/
