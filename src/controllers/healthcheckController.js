@@ -1,4 +1,4 @@
-const { healthcheckService, versionService } = require('../services')
+const { healthcheckService, versionService, MissingRequestPatameter} = require('../services')
 
 const healthcheck = async (ctx, next)=>{
     const heapInfo = await(new healthcheckService()).getHeapStatistics()
@@ -11,7 +11,7 @@ const healthcheck = async (ctx, next)=>{
 }
 
 const exceptionCheck = async (ctx, next)=>{
-    throw new Error('Throw exception')
+    throw new MissingRequestPatameter('required parameter')
 }
 
 module.exports = { healthcheck, exceptionCheck }
