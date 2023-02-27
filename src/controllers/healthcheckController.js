@@ -1,6 +1,13 @@
+const { healthcheckService, versionService } = require('../services')
 
 const healthcheck = async (ctx, next)=>{
-    ctx.body = {data: 'healthcheck...'}
+    const heapInfo = await(new healthcheckService()).getHeapStatistics()
+    const versionInfo = (new versionService()).getVersion
+    
+    ctx.body = {
+        version : versionInfo,
+        heapInformation : heapInfo,
+    }
 }
 
 const exceptionCheck = async (ctx, next)=>{

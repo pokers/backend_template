@@ -33,7 +33,6 @@ app.use(async (ctx, next)=>{
 app.use(async (ctx, next)=>{
     ctx.state.requestId = uuid.v4()
     try{
-        console.log('entrypoint...')
         await next()
     }catch(err){
         const errorObject = {
