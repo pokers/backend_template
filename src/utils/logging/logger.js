@@ -6,7 +6,7 @@ const log = (()=>{
         local: 'debug',
         dev: 'debug',
         stage: 'debug',
-        prod: 'notice',
+        prod: 'info',   // It should be updated to 'notice'
         unitTest: 'alert',
         integrationTest: 'alert',
     }

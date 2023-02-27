@@ -5,7 +5,7 @@ const dbEnv = dotenv.config({path: '../../env/postgresql.env'})
 
 const config = {
     App: {
-        ENV: appEnv.APP_ENV || 'local',
+        ENV: process.env.APP_ENV || appEnv.APP_ENV || 'local',
         PORT: appEnv.APP_PORT || 8880,
     },
     DB: {

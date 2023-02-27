@@ -12,7 +12,7 @@ const requestLogger = (ctx, error)=>{
         requestInfo: {
             method,
             url,
-            header: headers,
+            header: responseHeaders,
             body,
         },
         responseInfo: {

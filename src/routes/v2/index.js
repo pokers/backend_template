@@ -1,4 +1,4 @@
-const { Router } = require('express')
+const Router = require('koa-router')
 const { boardRouteV2 } = require('./boardRouteV2')
 
 const V2 = ()=>{

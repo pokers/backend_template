@@ -1,10 +1,10 @@
 
-const healthcheck = async (req, res, next)=>{
-    try{
-
-    }catch(e){
-        throw new Error('healthcheck')
-    }
+const healthcheck = async (ctx, next)=>{
+    ctx.body = {data: 'healthcheck...'}
 }
 
-module.exports = { healthcheck }
+const exceptionCheck = async (ctx, next)=>{
+    throw new Error('Throw exception')
+}
+
+module.exports = { healthcheck, exceptionCheck }

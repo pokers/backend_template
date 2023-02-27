@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:local": "APP_ENV=local node ./src/app.js"
+    "start:local": "APP_ENV=local node ./src/app.js",
+    "start:dev": "APP_ENV=dev node ./src/app.js",
+    "start:prod": "APP_ENV=prod node ./src/app.js"
   },
   "repository": {
     "type": "git",
@@ -23,7 +25,10 @@
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
-    "express": "^4.18.2",
+    "koa": "^2.14.1",
+    "koa-body": "^6.0.1",
+    "koa-compress": "^5.1.0",
+    "koa-router": "^12.0.0",
     "morgan": "^1.10.0",
     "pg": "^8.9.0",
     "uuid": "^9.0.0",

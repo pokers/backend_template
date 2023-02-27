@@ -1,11 +1,10 @@
-const { Router } = require('express')
-const { healthcheck } = require('../controllers')
+const Router = require('koa-router')
+const { healthcheck, exceptionCheck } = require('../controllers')
 
 const healthcheckRouter = ()=>{
     const router = Router();
-    router.use('/healthcheck', router);
     router.get('/', healthcheck);
-    
+    router.get('/exception', exceptionCheck);
     return router
 }
 
