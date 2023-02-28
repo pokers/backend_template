@@ -52,7 +52,7 @@ app.use(async (ctx, next)=>{
 
         requestLogger(ctx, {
             message: err.message,
-            trace: err.trace,
+            trace: err.stack,
         })
     }
 })

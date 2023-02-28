@@ -1,4 +1,4 @@
-
+const _ = require('lodash')
 const { log } = require('./logger')
 
 const requestLogger = (ctx, error)=>{
@@ -20,6 +20,10 @@ const requestLogger = (ctx, error)=>{
             responseHeaders,
             responseBody: body,
         }
+    }
+    if(error){
+        logEntry.responseInfo.responseBody = responseBody? _.cloneDeep(responseBody):{}
+        logEntry.responseInfo.responseBody.error = error
     }
 
     const logPrint = error? log.error: log.info
