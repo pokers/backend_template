@@ -53,7 +53,7 @@ npm install --save
     ```bash
     npm run test:{folder name}
     ```
-    - ex> `npm run test:dao`, `npm run test:repositories`, `npm run test:services`
+    - ex> `npm run test:dao`, `npm run test:dao:repositories`, `npm run test:services`
 <br />
 <br />
 
