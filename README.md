@@ -1,6 +1,4 @@
 # Notice Board
-================
-
 NodeJS backend template
 
 # Prerequisite
@@ -28,6 +26,8 @@ npm install --save
     - open `./env/backend.env` file and update your desired values.
 2. DB environment
     - open `./env/backend.env` file and update your loca values.
+<br />
+<br />
 
 ## Preparing local DB
 **It's for local developing. The Production DB will be running standalone, please do not connect while you are developing**
@@ -40,6 +40,8 @@ npm install --save
     ```bash
     docker-compose -f ./docker/DB-docker-compose.yml --env-file ./env/postgresql.env down
     ```
+<br />
+<br />
 
 ## Test Commands
 ### Unit test
@@ -52,6 +54,8 @@ npm install --save
     npm run test:{folder name}
     ```
     - ex> `npm run test:dao`, `npm run test:repositories`, `npm run test:services`
+<br />
+<br />
 
 ## Running Service Commands
 ### run local environment
