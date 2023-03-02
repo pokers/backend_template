@@ -1,4 +1,4 @@
-const { config } = require('../../config/config.js')
+const { config } = require('../../../deploy/config/config.js')
 const Winston = require('winston')
 
 const log = (()=>{

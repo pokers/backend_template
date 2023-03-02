@@ -1,9 +1,8 @@
 const koa = require('koa')
 const koaBody = require('koa-body')
-const koaCompress = require('koa-compress')
 const uuid = require('uuid')
 
-const { config } = require('./config/config') 
+const { config } = require('../deploy/config/config') 
 const { initRouter } = require('./routes') 
 const { log, requestLogger } = require('./utils/logging')
 

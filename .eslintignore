@@ -1,0 +1,6 @@
+docker/*
+env/*
+report/*
+node_modules/*
+__test__/*
+*.test.js

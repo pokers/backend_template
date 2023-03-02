@@ -21,21 +21,9 @@ class Debugger {
         try{
             const heapSnapshotStream = v8.getHeapSnapshot();
             const postfix = Date.now();
-            const heapFileName = `heapSnapshot_${postfix}.heapsnapshot`;
+            const heapFileName = `./reports/heapSnapshot_${postfix}.heapsnapshot`;
             const heapStream = fs.createWriteStream(heapFileName);
             heapSnapshotStream.pipe(heapStream);
-        }catch(e){
-            log.error(e);
-            throw e;
-        }
-    }
-
-    async createHeapDump(){
-        try{
-            const postfix = Date.now();
-            const heapdumpFileName = `hapdump_${postfix}.heapsnapshot`;
-            heapdump.writeSnapshot(heapdumpFileName);
-            
         }catch(e){
             log.error(e);
             throw e;

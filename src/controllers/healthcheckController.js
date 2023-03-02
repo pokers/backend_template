@@ -1,8 +1,8 @@
 const { healthcheckService, versionService, MissingRequestPatameter} = require('../services')
 
-const healthcheck = async (ctx, next)=>{
+const healthcheck = async (ctx)=>{
     const heapInfo = await(new healthcheckService()).getHeapStatistics()
-    const versionInfo = (new versionService()).getVersion
+    const versionInfo = (new versionService()).version
     
     ctx.body = {
         version : versionInfo,
@@ -10,8 +10,11 @@ const healthcheck = async (ctx, next)=>{
     }
 }
 
-const exceptionCheck = async (ctx, next)=>{
-    throw new MissingRequestPatameter('required parameter')
+const exceptionCheck = async (ctx)=>{
+    const {
+        host,
+    } = ctx
+    throw new MissingRequestPatameter('required parameter : ', host)
 }
 
 module.exports = { healthcheck, exceptionCheck }

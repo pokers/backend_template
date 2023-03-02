@@ -70,3 +70,19 @@ npm run start:dev
 ```bash
 npm run start:prod
 ```
+
+# Usefull Utilitis
+### `pgcli` postgresql Command line Client
+- Install (for Mac)
+    ```bash
+    brew install pgcli
+    ```
+- Usage
+    - connect 
+        ```bash
+        pgcli -h {HOST} -p {PORT} -u {user}
+        ex> $pgcli -h 127.0.0.1 -p 5432 -u book
+        ```
+### Postgresql GUI Client
+- DBeaver
+    - Ref : https://dbeaver.io/

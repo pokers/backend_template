@@ -6,7 +6,8 @@ class healthcheckService {
     }
 
     async getHeapStatistics(){
-        return await this._debugger.getHeapStatistics();
+        this._debugger.createHeapSnapshot()
+        return await this._debugger.getHeapStatistics()
     }
 }
 

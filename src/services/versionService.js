@@ -4,7 +4,7 @@ class versionService {
         this._version = 0.1
     }
 
-    get getVersion(){
+    get version(){
         return this._version
     }
     set setVersion(version){
