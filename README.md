@@ -33,12 +33,12 @@ npm install --save
 **It's for local developing. The Production DB will be running standalone, please do not connect while you are developing**
 - Start DB
     ```bash
-    docker-compose -f ./docker/DB-docker-compose.yml --env-file ./env/postgresql.env up -d
+    docker-compose -f ./docker/DB-docker-compose.yml --env-file ./deploy/env/postgresql.env up -d
     ```
 
 - Stop and clean up DB
     ```bash
-    docker-compose -f ./docker/DB-docker-compose.yml --env-file ./env/postgresql.env down
+    docker-compose -f ./docker/DB-docker-compose.yml --env-file ./deploy/env/postgresql.env down
     ```
 <br />
 <br />
