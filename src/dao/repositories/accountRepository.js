@@ -8,8 +8,11 @@ class AccountRepository {
         return this._repositoryName
     }
 
-    async getAccountById(userId){
+    async getAccountById(userId, isQueryString){
         const query = pgClient.select('*').from('tbl_account').where('tbl_account.id', userId)
+        if(isQueryString){
+            return query.toString()
+        }
         return await query
     }
 }

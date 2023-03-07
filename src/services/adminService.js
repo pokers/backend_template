@@ -20,4 +20,8 @@ class AdminService {
     }
 }
 
+class temp {
+    
+}
+
 module.exports = { AdminService }
