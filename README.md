@@ -41,6 +41,7 @@ npm install --save
     docker-compose -f ./docker/DB-docker-compose.yml --env-file ./deploy/env/postgresql.env down
     ```
 <br />
+
 - DB Migration
     - install migration tool
         ```bash
