@@ -8,6 +8,13 @@ class MyListRepository {
         return this._repositoryName
     }
 
+    async getBookInfo(bookId){
+        const query = pgClient.select('id as book_id', 'title', 'authors', 'translators', 'publisher', 'thumbnail_url as image', 'current_page', 'total_page', 'meta')
+                        .from('tbl_mybook as tb')
+                        .where('tb.id', bookId).first()
+        return await query
+    }
+  
     async getMyList(offset, userId, sortType, perPage) {
       // 데이터의 총 개수 구하기
       const countQuery = pgClient('tbl_mybook').where('user_id', userId).count().first();
