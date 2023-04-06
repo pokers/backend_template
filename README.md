@@ -41,6 +41,16 @@ npm install --save
     docker-compose -f ./docker/DB-docker-compose.yml --env-file ./deploy/env/postgresql.env down
     ```
 <br />
+
+- DB Migration
+    - install migration tool
+        ```bash
+        npm install knex -g
+        ```
+    - Run migration
+        ```bash
+        knex migrate:latest
+        ```
 <br />
 
 ## Test Commands
