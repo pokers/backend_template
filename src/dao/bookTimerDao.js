@@ -43,7 +43,6 @@ class BookTimerDao {
         const bookHistoryRepo = new BookHistoryRepository()
 
         const accountInfo = await accountRepo.getAccountByBookId(bookId)
-        
         // deleted book check
         if (!accountInfo){
             throw new MyBookNotFound(bookId)
@@ -122,7 +121,7 @@ class BookTimerDao {
 
         
         // if id of added book history is in table, throw error
-        if (removedBookResult){
+        if(removedBookResult && removedBookResult.length > 0)
             throw new InternalServerError()
         }
 

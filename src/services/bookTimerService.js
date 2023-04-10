@@ -56,7 +56,6 @@ class BookTimerService {
         }
 
         const bookTimerDao = new BookTimerDao()
-        const bookTimerInfo = await bookTimerDao.getBookTimerInfoByBookId(bookId)
 
         let deleteHistory;
         if (bookHistoryId){
@@ -65,8 +64,11 @@ class BookTimerService {
         else{
             deleteHistory = await bookTimerDao.deleteReadingTimeByBookId(bookId)
         }
+        const bookTimerInfo = await bookTimerDao.getBookTimerInfoByBookId(bookId)
+
         return bookTimerInfo
     }
+
 
 
 }
